@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home Controll</title>
+	<link rel="stylesheet" href="stylesheet.css">
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+	<script src="controller.js"></script> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+	<ul class="head">
+	  <li><a>Home Controll</a></li>
+	</ul>
+
+	<div class="buttons">
+		<div class="btn-group">	
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createAlarm" id="alarmButton"><span class="glyphicon glyphicon-time"> Alarm</span></button>
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus"> Add</span></button>
+			<button type="button" class="btn btn-primary" id="remove"><span class="glyphicon glyphicon-trash"> Remove</span></button>
+		</div>
+	</div>
+
+
+	<div class="main">
+<!--
+	 <div class="danger">
+	  <p><strong>Danger!</strong> Some text...</p>
+	</div>
+	-->
+		<ul class="liste" id="liste">
+			
+		</ul>
+	</div>
+
+	<!-- Modal  create a alarm-->
+	<div id="createAlarm" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">Add new alarm</h4>
+	      </div>
+	      <form>	 
+	      	  <h3 id="actualTime">12:12</h3>
+			  <div class="input-group">
+			    <span class="input-group-addon"><i class="glyphicon glyphicon-lamp"></i></span>
+			    <input id="hourAlarm" type="number" class="form-control" name="hourAlarm" placeholder="Hour">
+			  </div>
+			  <div class="input-group">
+			    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+			    <input id="minuteAlarm" type="number" class="form-control" name="minuteAlarm" placeholder="Minute">
+			  </div>	
+
+			  <div class="form-group">
+			  <label for="sel1">Select list:</label>
+			  <select class="form-control" id="sel1">
+			    <option>1</option>
+			    <option>2</option>
+			    <option>3</option>
+			    <option>4</option>
+			  </select>
+			</div>
+
+
+		  </form>
+	      <div class="modal-footer">
+	      	<button type="button" class="btn btn-danger" data-dismiss="modal" id="removeAlarm"><span class="glyphicon glyphicon-trash">Delete</button>
+	        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-success" data-dismiss="modal" id="setNewAlarm">Create</button>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
+
+	<!-- Modal  add a Contoller-->
+	<div id="myModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">Add new Controller</h4>
+	      </div>
+	      <form>
+			  <div class="input-group">
+			    <span class="input-group-addon"><i class="glyphicon glyphicon-lamp"></i></span>
+			    <input id="name" type="text" class="form-control" name="name" placeholder="Name">
+			  </div>
+			  <div class="input-group">
+			    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+			    <input id="pin" type="number" class="form-control" name="pin" placeholder="0">
+			  </div>			 
+		  </form>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-success" data-dismiss="modal" id="insert">Save</button>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
+</body>
+</html>
