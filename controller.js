@@ -3,6 +3,9 @@ $(document).ready(function(){
 	//appendToList("Test");
 	var ajaxurl = 'request.php';
 
+    //appendToList("Auto");
+    //showAlert("Text");
+
 	$('#insert').click(function(){
 		var data =  {'action': 'addElement', 'element': document.getElementById("name").value , 'pin': document.getElementById("pin").value};
         $.post(ajaxurl, data, function (response) {
@@ -22,11 +25,36 @@ $(document).ready(function(){
     	});
     });
 
+    function showAlert(text){
+        var parent = document.getElementsByClassName("main")[0];
+        var alertDiv = document.createElement("div");
+        alertDiv.className = "alert alert-danger";
+        
+
+        var closeButton = document.createElement("a");
+        closeButton.className = "close";
+        closeButton.setAttribute("data-dismiss", "alert");
+        closeButton.href = "#";
+        closeButton.setAttribute("aria-label", "close");
+        closeButton.innerHTML = '&times;';
+        alertDiv.appendChild(closeButton);
+
+        var textCon = document.createElement("p");
+        var txt = document.createTextNode(text);
+        var warningText = document.createElement("strong");
+        warningText.innerText = "Message:  ";
+        textCon.appendChild(warningText);
+        textCon.appendChild(txt);
+        alertDiv.appendChild(textCon);
+
+        parent.insertBefore(alertDiv, parent.firstChild);
+    }
+
 
 	$('#removeAlarm').click(function(){
     	var data =  {'action': 'removeAlarm'};
         $.post(ajaxurl, data, function(response) {
-        	alert(response);
+        	showAlert(response);
         });
     });
 
@@ -64,7 +92,7 @@ $(document).ready(function(){
 		var selectedOption = selectBox.options[selectBox.selectedIndex].text;
 		var data =  {'action': 'setNewAlarm', 'hour': document.getElementById("hourAlarm").value, 'minute': document.getElementById("minuteAlarm").value, 'selectedOption': selectedOption};
         $.post(ajaxurl, data, function(response) {
-        	alert(response);
+        	showAlert(response);
         });
     });
 
@@ -113,7 +141,7 @@ $(document).ready(function(){
 		var ajaxurl = 'request.php',
 		data =  {'action': 'removeFromArray', 'element': this.parentElement.id};
         $.post(ajaxurl, data, function(response) {
-        	alert(response);
+        	showAlert(response);
         });
 
     	var x = document.getElementById(this.parentElement.id);
